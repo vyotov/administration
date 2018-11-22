@@ -19,6 +19,20 @@ You can get a list of copies of all courses
 
 public class SchoolTest {
     @Test
+    public void isAddingCourseCorrect(){
+        boolean expect = true;
+        boolean result = false;
+        School school = new School();
+        Course course = new Course();
+
+        school.add(course);
+        if(school.getCollectionOfCourses().contains(course)){
+            result = true;
+        }
+
+        Assert.assertEquals("A course has been added",expect,result);
+    }
+    @Test
     public void schoolNameAndOpeningDateAreNotNull() throws ParseException {
         boolean expect = true;
         boolean resultDate = false;
