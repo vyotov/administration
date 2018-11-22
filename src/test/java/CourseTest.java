@@ -22,7 +22,7 @@ public class CourseTest {
         course.setStartDate(startDate);
         course.setEndDate(endDate);
 
-        if (course.getEndDate().after(course.getStartDate)){
+        if (course.getEndDate().after(course.getStartDate())){
             actual = true;
         }
 

@@ -18,7 +18,27 @@ You can get a list of copies of all courses
  */
 
 public class SchoolTest {
-
+    @Test
+    public void schoolNameAndOpeningDateAreNotNull() throws ParseException {
+        boolean expect = true;
+        boolean resultDate = false;
+        boolean resultName = false;
+        SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+        Date openingDate = dateformat.parse("15/09/2018");
+        //act
+        School school = new School();
+        school.setName("Fontys");
+        school.setOpeningDate(openingDate);
+        if (school.getName()!= null){
+            resultName = true;
+        }
+        if (school.getOpeningDate()!= null){
+            resultDate = true;
+        }
+        school.setOpeningDate(openingDate);
+        Assert.assertEquals("School opening date in not null",expect,resultDate);
+        Assert.assertEquals("School name is not null",expect,resultName);
+    }
     @Test
     public void schoolShouldHasNameOpeningDateAndCollectionOfCourses() throws ParseException {
         //arrange
