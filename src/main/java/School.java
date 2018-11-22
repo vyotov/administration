@@ -29,4 +29,8 @@ public class School {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void add(Course course) {
+        this.collectionOfCourses.add(course);
+    }
 }

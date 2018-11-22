@@ -24,7 +24,8 @@ public class SchoolTest {
         boolean result = false;
         School school = new School();
         Course course = new Course();
-
+        List<Course> courseList = new ArrayList<Course>();
+        school.setCollectionOfCourses(courseList);
         school.add(course);
         if(school.getCollectionOfCourses().contains(course)){
             result = true;
