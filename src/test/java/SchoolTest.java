@@ -8,7 +8,7 @@ import java.util.*;
 /*
 
 
-You can get a course by name.
+
 You can get a list of all course names.
 You can get a list of copies of all courses
 
@@ -38,6 +38,17 @@ public class SchoolTest {
         collectionOfCourses.add(os);
 
         school.setCollectionOfCourses(collectionOfCourses);
+    }
+    @Test
+    public void getListOfAllCourses() throws ParseException{
+        boolean expect = true;
+        boolean result = false;
+        School school = new School();
+        fillInCourse(school);
+        if(school.getCollectionOfCourses()!=null){
+            result = true;
+        }
+        Assert.assertEquals("Get list of all courses",expect,result);
     }
     @Test
     public void getCourseByName() throws ParseException {
