@@ -4,6 +4,7 @@ public class Course {
 
     private Date startDate;
     private Date endDate;
+    private String name;
 
     public Date getStartDate() {
         return this.startDate;
@@ -19,5 +20,13 @@ public class Course {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
