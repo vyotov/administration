@@ -17,6 +17,7 @@ You can get a list of copies of all courses
 
 public class SchoolTest {
 
+
     private void fillInCourse(School school) throws ParseException {
         List<Course> collectionOfCourses = new ArrayList<Course>();
         Course math = new Course();
@@ -35,6 +36,22 @@ public class SchoolTest {
         collectionOfCourses.add(os);
 
         school.setCollectionOfCourses(collectionOfCourses);
+    }
+    @Test
+    public void uniqueCourseName() throws DuplicateCourseException, ParseException {
+        boolean expect = true;
+        boolean result = false;
+
+        School school = new School();
+        fillInCourse(school);
+        List<Course> collectionOfCourses = new ArrayList<Course>();
+        collectionOfCourses = school.getCollectionOfCourses();
+        Course math1 = new Course();
+        math1.setName("Math");
+        if(!collectionOfCourses.contains(math1.getName())){
+            result = true;
+        } else {throw  new DuplicateCourseException("The name is not unique");}
+        Assert.assertEquals("The course name is unique",expect,result);
     }
     @Test
     public void courseBeginDatesAreAfterTheBeginDate() throws CourseDateException,ParseException{
