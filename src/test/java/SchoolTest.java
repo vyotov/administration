@@ -23,6 +23,9 @@ public class SchoolTest {
         Course math = new Course();
         Course tci = new Course();
         Course os = new Course();
+        math.setName("Math");
+        tci.setName("TCI");
+        os.setName("OS");
 
         SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
         math.setStartDate(dateformat.parse("12/11/2018"));
