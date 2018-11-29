@@ -6,10 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /*
-A School has a name, an opening date and a collection of courses.
-Name and opening date are not allowed to be null.
-You can add a course to the school.
-Course begin dates are after the school begin date. Throw a CourseException when it’s wrong.
+
+
 The name of the course within a school is unique, otherwise a DuplicateCourseException is thrown.
 You can get a course by name.
 You can get a list of all course names.
@@ -18,6 +16,41 @@ You can get a list of copies of all courses
  */
 
 public class SchoolTest {
+
+    private void fillInCourse(School school) throws ParseException {
+        List<Course> collectionOfCourses = new ArrayList<Course>();
+        Course math = new Course();
+        Course tci = new Course();
+        Course os = new Course();
+
+        SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+        math.setStartDate(dateformat.parse("12/11/2018"));
+        tci.setStartDate(dateformat.parse("15/12/2018"));
+        os.setStartDate(dateformat.parse("15/10/2018"));
+
+        school.setOpeningDate(dateformat.parse("14/10/2018"));
+
+        collectionOfCourses.add(math);
+        collectionOfCourses.add(tci);
+        collectionOfCourses.add(os);
+
+        school.setCollectionOfCourses(collectionOfCourses);
+    }
+    @Test
+    public void courseBeginDatesAreAfterTheBeginDate() throws CourseDateException,ParseException{
+        boolean expect = true;
+        boolean result = false;
+
+        School school = new School();
+        fillInCourse(school);
+        for (Course course : school.getCollectionOfCourses())
+              {
+                  if(course.getStartDate().after(school.getOpeningDate())){
+                  result = true;
+                  }else { throw new CourseDateException("The starting date of the course is before the opening date of the school");}
+              }
+        Assert.assertEquals("The starting date of the course is after the opening date of the school",expect,result);
+    }
     @Test
     public void isAddingCourseCorrect(){
         boolean expect = true;
