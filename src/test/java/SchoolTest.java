@@ -8,7 +8,6 @@ import java.util.*;
 /*
 
 
-The name of the course within a school is unique, otherwise a DuplicateCourseException is thrown.
 You can get a course by name.
 You can get a list of all course names.
 You can get a list of copies of all courses
@@ -39,6 +38,18 @@ public class SchoolTest {
         collectionOfCourses.add(os);
 
         school.setCollectionOfCourses(collectionOfCourses);
+    }
+    @Test
+    public void getCourseByName() throws ParseException {
+        boolean expect = true;
+        boolean result = false;
+        Course course = new Course();
+        course.setName("TestCourse");
+        if(course.getName()!=null){
+            result = true;
+        }
+        Assert.assertEquals("The course name can be got",expect,result);
+
     }
     @Test
     public void uniqueCourseName() throws DuplicateCourseException, ParseException {
